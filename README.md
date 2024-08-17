@@ -37,3 +37,7 @@ NBTはそのままでは扱いづらいのでSNBTに変換する
 ```
 
 変換されたファイルは `convert` ディレクトリに書き出される (`_generator_work` はデータジェネレータの作業ディレクトリ)
+
+## Lisence
+
+This repository is published under [MIT License](LICENSE).
