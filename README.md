@@ -10,15 +10,7 @@ NBTファイルをクライアントjarから抽出して解析する
 
 簡単のため `ln -s "/path/to/minecraft/versions" versions` を実行し、クライアントjarのルートディレクトリへのリンクを張っておく
 
-### 2. サーバjarのダウンロード
-
-NBTコンバータ(`net.minecraft.data.Main`)はクライアントjarには同梱されていないため、サーバjarを[ダウンロード](https://www.minecraft.net/ja-jp/download/server)する
-
-```zsh
-wget https://example.com/server.jar
-```
-
-### 3. NBTファイルの抽出
+### 2. NBTファイルの抽出
 
 対象バージョンのクライアントjarから対象のNBTを探す
 
@@ -28,8 +20,20 @@ wget https://example.com/server.jar
 jar tf ./versions/1.18.2/1.18.2.jar | grep igloo
 ```
 
-取得したパスをもとに、jarからNBTファイルを抽出 ここはユーティリティスクリプトを用意した
+取得したパスをもとに、jarからNBTファイルを抽出
 
 ```zsh
 ./extract_nbt.sh 1.18.2 path/to/target.nbt
 ```
+
+抽出されたファイルは `extract` ディレクトリに書き出される
+
+### 3. SNBTへの変換
+
+NBTはそのままでは扱いづらいのでSNBTに変換する
+
+```zsh
+./convert_nbt.sh 1.18.2 path/to/target.nbt
+```
+
+変換されたファイルは `convert` ディレクトリに書き出される (`_generator_work` はデータジェネレータの作業ディレクトリ)
